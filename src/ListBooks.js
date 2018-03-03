@@ -12,23 +12,28 @@ class ListBooks extends Component {
     const { books } = this.props;
     //const currentlyReading = books.filter(book => book.shelf === "currentlyReading");
     const currentlyReading = filterBy(books, "currentlyReading");
+    console.log(JSON.stringify(currentlyReading));
     const wantToRead = filterBy(books, "wantToRead");
     const read = filterBy(books, "read");
 
     return (
-      <div className='myreads'>
-      <h1>My Reads</h1>
-        <div className=''>
-          <h2>Currently Reading</h2>
-          <Books books={currentlyReading}/>
+      <div className='my-reads'>
+        <div className='my-reads-title'>
+          <h1>My Reads</h1>
         </div>
-        <div className=''>
-          <h2>Want to read</h2>
-          <Books books={wantToRead}/>
-        </div>
-        <div className=''>
-          <h2>Read</h2>
-          <Books books={read}/>
+        <div className='my-reads-content'>
+          <div className=''>
+            <h2 className='book-shelf'>Currently Reading</h2>
+            <Books books={currentlyReading}/>
+          </div>
+          <div className=''>
+            <h2 className='book-shelf'>Want to read</h2>
+            <Books books={wantToRead}/>
+          </div>
+          <div className=''>
+            <h2 className='book-shelf'>Read</h2>
+            <Books books={read}/>
+          </div>
         </div>
       </div>
     )
