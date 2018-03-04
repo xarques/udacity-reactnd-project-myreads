@@ -15,7 +15,7 @@ body {
   text-align: center;
 }
 
-.my-reads-content {
+.shelves {
   margin: 10px;
 }
 
@@ -45,20 +45,116 @@ body {
 .book-list-item {
   width: 150px;
   padding: 10px;
+  margin: 10px;
   background: white;
+  position: relative;
   /* display: inline; */
   /* display: flex; */
 }
 
 .book-title {
-  margin: 10px 0px 5px 0px;
+  margin: 15px 0px 5px 0px;
   padding: 0;
+  font-size: 13px;
 }
 
 .author-list {
   width: 100%;
+  font-size: 13px;
   margin: 0;
   padding: 0;
   list-style-type: none;
   opacity: 0.5;
+}
+
+.change-shelf {
+  position: absolute;
+  top: 184px;
+  right: -4px;
+  padding-left: 20px;
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #5dad59;
+  background-image: url('./icons/arrow-drop-down.svg');
+  background-size: 100% 100%;
+  border: 0;
+  color: black;
+  font-size: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.shelves-options {
+  width: 180px;
+  height: 100px;
+  display: block;
+  position: absolute;
+  right: -18px;
+  bottom: -22px;
+  z-index: 10;
+}
+
+.hidden {
+  /* display: none; */
+}
+
+.list-books {
+  padding-top: 80px;
+}
+
+.list-books-top {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  border-bottom: 1px solid #d5d8df;
+}
+
+.search-books {
+  width: 100%;
+  padding: 19px 20px 20px 20px;
+  background-size: 2em;
+  font-size: 2em;
+  border: 0;
+  outline: none;
+}
+
+.search-back {
+  padding: 20px 20px 20px 20px;
+  background-image: url('./icons/arrow-back.svg');
+  background-repeat: no-repeat;
+  background-position: 20px center;
+  background-size: 1.2em;
+  font-size: 1.2em;
+  border: 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.search-link {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background-image: url('./icons/add.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  /* padding-left: 20px; */
+  align-self: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #5dad59;
+  background-size: 100% 100%;
+  border: 0;
+  color: black;
+  font-size: 0;
+  vertical-align: middle;
+  cursor: pointer;
+  outline: none;
 }
