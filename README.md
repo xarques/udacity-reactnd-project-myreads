@@ -1,8 +1,13 @@
 # MyReads Project
 
-This App allows you to have a collection of books in different categories, where you can move your books from one category to another. 
+This application allows you to display 3 "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
 
-There's also a search that allows you to find more books and add them to your personal collection.
+* Currently Reading
+* Want to Read
+* Read
+* 
+
+There's also a search feature that allows you to find more books and add them to your personal collection by choosing the appropriate shelf.
 
 ## Installation
 
@@ -43,8 +48,6 @@ $ yarn build
 ## App Functionality
 
 In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
-
-To get started developing right away:
 
 * Currently Reading
 * Want to Read
