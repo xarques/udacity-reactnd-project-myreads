@@ -21,6 +21,16 @@ Runs development server, with live reloading, on http://localhost:3000.
 $ yarn start
 ```
 
+
+## Build
+
+Builds the app for production to the `build` folder.
+
+```bash
+$ yarn build
+```
+
+
 ## App Functionality
 
 In this application, the main page displays a list of "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
