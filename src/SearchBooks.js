@@ -28,9 +28,9 @@ class SearchBooks extends Component {
         books.forEach(book => {
           const bookInShelf = this.props.myBooks.find(myBook => myBook.id === book.id);
           if (bookInShelf) {
-            book.shelf = bookInShelf.shelf
+            book.shelf = bookInShelf.shelf;
           } else {
-            // console.log('book.shelf = ' + book.shelf);
+            book.shelf = 'none';
           }
         })
         this.setState(state => {
