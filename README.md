@@ -1,5 +1,12 @@
 # MyReads Project
 
+## Project purpose
+This application was built for the *Udacity React Nanodegree Program*.
+It is the first of three projects to deliver in order to complete the *Udacity React Nanodegree Program*.
+The focus of this project is on writing functional React code.
+After learning React's component model, I was able to write declarative, composable user interfaces to build this production-ready app.
+
+## Project objectives
 This application allows you to display 3 "shelves" (i.e. categories), each of which contains a number of books. The three shelves are:
 
 * Currently Reading
@@ -107,7 +114,7 @@ search(query)
 * Returns a Promise which resolves to a JSON object containing a collection of a maximum of 20 book objects.
 * These books do not know which shelf they are on. They are raw results only. You'll need to make sure that books have the correct state while on the search page.
 
-## 
+## Important
 
 The backend API uses a fixed set of cached search results and is limited to a particular set of search terms, which can be found in [SEARCH_TERMS.md](SEARCH_TERMS.md). That list of terms are the _only_ terms that will work with the backend, so don't be surprised if your searches for Basket Weaving or Bubble Wrap don't come back with any results.
 
