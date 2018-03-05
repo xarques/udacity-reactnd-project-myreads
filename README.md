@@ -9,27 +9,36 @@ There's also a search that allows you to find more books and add them to your pe
 Installs all necessary modules to run the current project.
 
 ```bash
+$ npm install
+```
+or
+```bash
 $ yarn install
 ```
-
 
 ## Development
 
 Runs development server, with live reloading, on http://localhost:3000.
 
 ```bash
+$ npm start
+```
+or
+```bash
 $ yarn start
 ```
-
 
 ## Build
 
 Builds the app for production to the `build` folder.
 
 ```bash
+$ npm run build
+```
+or
+```bash
 $ yarn build
 ```
-
 
 ## App Functionality
 
