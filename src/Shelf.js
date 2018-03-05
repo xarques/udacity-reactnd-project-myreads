@@ -12,18 +12,18 @@ class Shelf extends Component {
   render() {
     const { books, title, changeShelf } = this.props;
     return (
-      <div className=''>
-        {title && <h2 className='book-shelf'>{title}</h2> }
+      <div className='book-shelf'>
+        {title && <h2 className='book-shelf-title'>{title}</h2> }
         <ul className='book-list'>
           { books.map(book => 
               <li className='book-list-item' key={book.id}>
                 <div className='book-cover' style={{
-                  backgroundImage: `url(${book.imageLinks.smallThumbnail})`
+                backgroundImage: `url(${(book.imageLinks && book.imageLinks.smallThumbnail) || 'icons/no-image-available.jpg' })`
                 }} />
                 <ShelfMenu book={ book } changeShelf= { changeShelf }/>
                 <p className='book-title'>{book.title}</p>
                 <ul className='author-list'>
-                  { book.authors.map(author => <li key={author}>{author}</li>) }
+                  { book.authors && book.authors.map(author => <li key={author}>{author}</li>) }
                 </ul>
               </li>
             )

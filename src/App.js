@@ -7,33 +7,59 @@ import './App.css';
 
 class App extends Component {
   state = {
-    books: []
+    currentlyReading: [],
+    wantToRead: [],
+    read: [],
+    myBooks: []
   }
 
   componentDidMount() {
-    // shelf: <String> contains one of ["wantToRead", "currentlyReading", "read"]
     BooksAPI.getAll().then((books) => {
-      console.log(JSON.stringify(books));
-      this.setState({ books });
+      this.setState(this.updateShelves(books));
+    });
+  }
+
+  updateShelves(books) {
+    const filterBy = (b, shelf) => b.filter(book => book.shelf === shelf);
+    // Create an array of currently reading books
+    const currentlyReading = filterBy(books, "currentlyReading");
+    // Create an array of want to read books
+    const wantToRead = filterBy(books, "wantToRead");
+    // Create an array of read books
+    const read = filterBy(books, "read");
+    return ({
+      myBooks: books,
+      currentlyReading,
+      wantToRead,
+      read
     });
   }
 
   changeShelf = (book, newShelf) => {
-    this.setState(state => {
-      // Retrieve the index of the book in the books array
-      const bookIndex = state.books.findIndex(b => b.id === book.id);
-      // Clone the books array
-      const newBooks = [...state.books];
-      // Update the shelf
-      newBooks[bookIndex].shelf = newShelf
-      BooksAPI.update(book, newShelf);
-      // Return the new books array
-      return(
-        {
-          books: newBooks
+    if (book.shelf !== newShelf) {
+      this.setState(state => {
+        // Retrieve the index of the book in the books array
+        const bookIndex = state.myBooks.findIndex(b => b.id === book.id);
+        // Clone the books array
+        const newBooks = [...state.myBooks];
+        if (bookIndex !== -1) {
+          // Book already exists. Update the shelf
+          newBooks[bookIndex].shelf = newShelf
+        } else {
+          
+          // Book is new. Set the shelf and add the new book in the array
+          book.shelf = newShelf;
+          newBooks.push(book);
         }
-      )
-    })
+        // Update the shelf
+        BooksAPI.update(book, newShelf).then(response => {
+          // Do not refresh the view. We assume that the book has been updated successfully
+          // this.componentDidMount();
+        });
+        // Return the new books arrays
+        return (this.updateShelves(newBooks));
+      });
+    }
   }
 
   render() {
@@ -41,14 +67,16 @@ class App extends Component {
       <div className="app">
         <Route exact path='/' render={() => (
           <ListBooks
-            books={ this.state.books }
+            currentlyReading={this.state.currentlyReading}
+            wantToRead={this.state.wantToRead}
+            read={this.state.read}
             changeShelf={ this.changeShelf }
           />
         )}
         />
         <Route path='/search' render={() => (
           <SearchBooks
-            books={ this.state.books }
+            myBooks={this.state.myBooks}
             changeShelf={ this.changeShelf }
           />
         )}

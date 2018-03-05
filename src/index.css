@@ -4,8 +4,6 @@ body {
   font-family: sans-serif;
 }
 
-.my-reads {
-}
 .my-reads-title {
   padding: 8px 0;
   background-color: green;
@@ -29,7 +27,7 @@ body {
   border-radius: 1%;
 }
 
-.book-shelf {
+.book-shelf-title {
   padding-bottom: 5px;
   margin-bottom: 0;
   border-bottom: 2px solid rgba(0,0,0,0.3);
@@ -37,6 +35,7 @@ body {
 
 .book-list {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -85,21 +84,53 @@ body {
   vertical-align: middle;
   cursor: pointer;
   outline: none;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
 .shelves-options {
-  width: 180px;
-  height: 100px;
-  display: block;
   position: absolute;
-  right: -18px;
-  bottom: -22px;
+  padding: 0;
+  margin: 0;
+  width: 143px;
+  height: 84px;
+  display: block;
+  left: 90px;
+  bottom: 64px;
   z-index: 10;
+  background-color: #cecece;
+  border-radius: 3px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.shelf-option {
+  /* width: 150px;
+  height: 15px; */
+  font-size: 14px;
+  color: black;
+  cursor: pointer;
+}
+
+.shelf-option-title {
+  opacity: 0.5;
+  margin-left: 24px;
+}
+
+.shelf-option p {
+  margin: 0;
+  padding: 0;
+  color: black;
+  margin-right: 5px;
+}
+.shelf-option span {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.shelf-option span.invisible {
+  opacity: 0;
 }
 
 .hidden {
-  /* display: none; */
+  display: none;
 }
 
 .list-books {

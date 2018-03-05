@@ -2,36 +2,53 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Shelf from './Shelf';
-import escapeRegexp from 'escape-string-regexp';
-import sortBy from 'sort-by';
+import * as BooksAPI from './BooksAPI';
 
 class SearchBooks extends Component {
   static propTypes = {
-    books: PropTypes.array.isRequired,
-    changeShelf: PropTypes.func.isRequired
+    changeShelf: PropTypes.func.isRequired,
+    myBooks: PropTypes.array.isRequired
   }
 
   state = {
+    books: [],
     query: ''
   }
 
   updateQuery = query => {
-    this.setState({query: query.trim()});
+    this.setState({ query });
+    if (!query) {
+      this.setState({ books: [] });
+      return;
+    }
+    BooksAPI.search(query).then(books => {
+      if (books.error) {
+        this.setState({ books: [] });
+      } else {
+        books.forEach(book => {
+          const bookInShelf = this.props.myBooks.find(myBook => myBook.id === book.id);
+          if (bookInShelf) {
+            book.shelf = bookInShelf.shelf
+          } else {
+            // console.log('book.shelf = ' + book.shelf);
+          }
+        })
+        this.setState(state => {
+          if (state.query) {
+            // The query is not empty when receiving the search response
+            return { books }
+          } else {
+            // Ignore the search response as the query field is empty
+            return { books: []}
+          }
+        });
+      }
+    });
   } 
 
   render() {
-    const { books, changeShelf } = this.props;
-    const { query } = this.state;
-
-    let showingBooks;
-    if (query) {
-      const match = RegExp(escapeRegexp(query), 'i');
-      showingBooks = books.filter(book => match.test(book.title) );
-    } else {
-      showingBooks = books;
-    }
-
-    showingBooks.sort(sortBy('title'));
+    const { changeShelf } = this.props;
+    const { books } = this.state;
 
     return (
       <div className='list-books'>
@@ -41,11 +58,11 @@ class SearchBooks extends Component {
             className="search-books"
             type="text"
             placeholder="Search Books"
-            value = { query }
+            value= {this.state.query}
             onChange={ event => this.updateQuery(event.target.value) }
           />
         </div>
-        <Shelf books={showingBooks} changeShelf={changeShelf} />
+        <Shelf books={books} changeShelf={changeShelf} />
       </div>
     )
   }

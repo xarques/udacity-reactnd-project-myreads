@@ -5,19 +5,14 @@ import Shelf from './Shelf';
 
 class ListBooks extends Component {
   static propTypes = {
-    books: PropTypes.array
+    currentlyReading: PropTypes.array.isRequired,
+    wantToRead: PropTypes.array.isRequired,
+    read: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired
   }
   
   render() {
-    const filterBy = (books, shelf) => books.filter(book => book.shelf === shelf);
-    const { books, changeShelf } = this.props;
-    // Create an array of currently reading books
-    const currentlyReading = filterBy(books, "currentlyReading");
-    // Create an array of want to read books
-    const wantToRead = filterBy(books, "wantToRead");
-    // Create an array of read books
-    const read = filterBy(books, "read");
-
+    const { currentlyReading, wantToRead, read, changeShelf } = this.props;
     return (
       <div className='my-reads'>
         <div className='my-reads-title'>
