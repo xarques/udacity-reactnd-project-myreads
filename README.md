@@ -1,9 +1,11 @@
 # MyReads Project
 
 ## Project purpose
-This application was built for the *Udacity React Nanodegree Program*.
-It is the first of three projects to deliver in order to complete the *Udacity React Nanodegree Program*.
+This application was built for the **Udacity React Nanodegree Program**.
+
+It is the first of three projects to deliver in order to complete the **Udacity React Nanodegree Program**.
 The focus of this project is on writing functional React code.
+
 After learning React's component model, I was able to write declarative, composable user interfaces to build this production-ready app.
 
 ## Project objectives
