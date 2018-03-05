@@ -5,7 +5,6 @@ This application allows you to display 3 "shelves" (i.e. categories), each of wh
 * Currently Reading
 * Want to Read
 * Read
-* 
 
 There's also a search feature that allows you to find more books and add them to your personal collection by choosing the appropriate shelf.
 
