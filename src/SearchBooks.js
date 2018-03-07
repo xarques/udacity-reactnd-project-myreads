@@ -25,23 +25,23 @@ class SearchBooks extends Component {
       if (books.error) {
         this.setState({ books: [] });
       } else {
-        books.forEach(book => {
+        // Clone the books array
+        // Follow udacity recommendation: 
+        // I would suggest that you not directly modify the book object rather create a new object containing the new details.
+        // Thinking that objects are immutable keeps your code error free.
+        const newBooks = books.map(book => {
+          const bookCloned = {...book};
           const bookInShelf = this.props.myBooks.find(myBook => myBook.id === book.id);
           if (bookInShelf) {
-            book.shelf = bookInShelf.shelf;
+            bookCloned.shelf = bookInShelf.shelf;
           } else {
-            book.shelf = 'none';
+            bookCloned.shelf = 'none';
           }
+          return bookCloned;
         })
-        this.setState(state => {
-          if (state.query) {
-            // The query is not empty when receiving the search response
-            return { books }
-          } else {
-            // Ignore the search response as the query field is empty
-            return { books: []}
-          }
-        });
+        // If The query is empty when receiving the search response
+        // then Ignore the search response
+        this.setState(state => state.query ? { books : newBooks } : { books: [] });
       }
     });
   } 

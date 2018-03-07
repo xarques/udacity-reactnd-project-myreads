@@ -46,7 +46,6 @@ class App extends Component {
           // Book already exists. Update the shelf
           newBooks[bookIndex].shelf = newShelf
         } else {
-          
           // Book is new. Set the shelf and add the new book in the array
           book.shelf = newShelf;
           newBooks.push(book);
